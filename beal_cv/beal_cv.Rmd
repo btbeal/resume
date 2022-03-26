@@ -1,0 +1,61 @@
+---
+name: Brennan
+surname: Beal
+position: "Quantitative Scientist"
+address: "500 Sterling Place, Apt 1F, Brooklyn NY, 11238"
+phone: +1 704 742 0288
+www: brennanbeal.com
+email: "brennanbeal@gmail.com"
+twitter: BealBrennan
+github: btbeal
+linkedin: btbeal
+headcolor: 990000
+aboutme: "I'm a data scientist passionate about bridging the gap between data and decision-making - let's build something together!" 
+date: "`r format(Sys.time(), '%B %Y')`"
+output: 
+  vitae::awesomecv:
+    page_total: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(vitae)
+library(dplyr)
+
+source('cv_data.R')
+
+```
+
+# Experience
+
+```{r}
+work %>% 
+  detailed_entries(
+    with = title,
+    what = unit,
+    why = detail,
+    when = glue::glue("{startMonth} {startYear} --> {endMonth} {endYear}",.na = ""),
+    where = where
+  )
+```
+
+# Education
+
+```{r}
+edu %>% 
+  detailed_entries(
+    with = inst,
+    what = deg,
+    when = endYear,
+    where = where,
+    why = detail)
+```
+# Publications
+
+```{r}
+knitr::write_bib(c("vitae", "tibble"), "packages.bib")
+
+bibliography_entries("packages.bib") %>%
+  arrange(desc(author$family), issued)
+```
+
