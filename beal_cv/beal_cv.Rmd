@@ -4,12 +4,13 @@ surname: Beal
 position: "Quantitative Scientist"
 address: "500 Sterling Place, Apt 1F, Brooklyn NY, 11238"
 phone: +1 704 742 0288
+profilepic: "./beal.jpg"
 www: brennanbeal.com
 email: "brennanbeal@gmail.com"
 twitter: BealBrennan
 github: btbeal
 linkedin: btbeal
-headcolor: 990000
+headcolor: 5051DB
 aboutme: "I'm a data scientist passionate about bridging the gap between data and decision-making - let's build something together!" 
 date: "`r format(Sys.time(), '%B %Y')`"
 output: 
@@ -50,6 +51,33 @@ edu %>%
     where = where,
     why = detail)
 ```
+
+
+# Packages
+
+```{r WORKS}
+packages %>%
+  detailed_entries(
+    with = area,
+    what = accomplishment,
+    why = detail,
+    when = year,
+    where = where
+  )
+```
+
+# Skills
+
+```{r SKILLS}
+skills %>%
+  detailed_entries(
+    with = area,
+    what = skills
+  )
+```
+
+
+
 # Publications
 
 ```{r}
